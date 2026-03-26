@@ -1,0 +1,353 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A1B2C3D41A2B3C4D5E6F7001 /* JustSipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6001 /* JustSipApp.swift */; };
+		A1B2C3D41A2B3C4D5E6F7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6002 /* ContentView.swift */; };
+			A1B2C3D41A2B3C4D5E6F7003 /* CoffeeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */; };
+			A1B2C3D41A2B3C4D5E6F7004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */; };
+			A1B2C3D41A2B3C4D5E6F7005 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */; };
+			A1B2C3D41A2B3C4D5E6F7006 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */; };
+			A1B2C3D41A2B3C4D5E6F7007 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */; };
+			A1B2C3D41A2B3C4D5E6F7008 /* JustSipTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A1B2C3D41A2B3C4D5E6F5001 /* JustSip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustSip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D41A2B3C4D5E6F6001 /* JustSipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustSipApp.swift; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+			A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeEntry.swift; sourceTree = "<group>"; };
+			A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+			A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+			A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+			A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+			A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustSipTheme.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1B2C3D41A2B3C4D5E6F8001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1B2C3D41A2B3C4D5E6F4001 = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41A2B3C4D5E6F4002 /* JustSip */,
+				A1B2C3D41A2B3C4D5E6F4003 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A1B2C3D41A2B3C4D5E6F4002 /* JustSip */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41A2B3C4D5E6F6001 /* JustSipApp.swift */,
+				A1B2C3D41A2B3C4D5E6F6002 /* ContentView.swift */,
+				A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */,
+				A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */,
+				A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */,
+				A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */,
+				A1B2C3D41A2B3C4D5E6F4004 /* Models */,
+				A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */,
+			);
+			path = JustSip;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41A2B3C4D5E6F4003 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41A2B3C4D5E6F5001 /* JustSip.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1B2C3D41A2B3C4D5E6F4004 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1B2C3D41A2B3C4D5E6F3002 /* JustSip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D41A2B3C4D5E6FA002 /* Build configuration list for PBXNativeTarget "JustSip" */;
+			buildPhases = (
+				A1B2C3D41A2B3C4D5E6F8002 /* Sources */,
+				A1B2C3D41A2B3C4D5E6F8001 /* Frameworks */,
+				A1B2C3D41A2B3C4D5E6F8003 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JustSip;
+			productName = JustSip;
+			productReference = A1B2C3D41A2B3C4D5E6F5001 /* JustSip.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1B2C3D41A2B3C4D5E6F3001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					A1B2C3D41A2B3C4D5E6F3002 = {
+						CreatedOnToolsVersion = 26.2;
+					};
+				};
+			};
+			buildConfigurationList = A1B2C3D41A2B3C4D5E6FA001 /* Build configuration list for PBXProject "JustSip" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1B2C3D41A2B3C4D5E6F4001;
+			productRefGroup = A1B2C3D41A2B3C4D5E6F4003 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1B2C3D41A2B3C4D5E6F3002 /* JustSip */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1B2C3D41A2B3C4D5E6F8003 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D41A2B3C4D5E6F7004 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1B2C3D41A2B3C4D5E6F8002 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1B2C3D41A2B3C4D5E6F7005 /* AddEntryView.swift in Sources */,
+				A1B2C3D41A2B3C4D5E6F7008 /* JustSipTheme.swift in Sources */,
+				A1B2C3D41A2B3C4D5E6F7003 /* CoffeeEntry.swift in Sources */,
+				A1B2C3D41A2B3C4D5E6F7002 /* ContentView.swift in Sources */,
+				A1B2C3D41A2B3C4D5E6F7007 /* ProfileView.swift in Sources */,
+				A1B2C3D41A2B3C4D5E6F7001 /* JustSipApp.swift in Sources */,
+				A1B2C3D41A2B3C4D5E6F7006 /* StatisticsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1B2C3D41A2B3C4D5E6F9001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1B2C3D41A2B3C4D5E6F9002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1B2C3D41A2B3C4D5E6F9003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JustSip/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.JustSip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1B2C3D41A2B3C4D5E6F9004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"JustSip/Preview Content\"";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.JustSip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1B2C3D41A2B3C4D5E6FA001 /* Build configuration list for PBXProject "JustSip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D41A2B3C4D5E6F9001 /* Debug */,
+				A1B2C3D41A2B3C4D5E6F9002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D41A2B3C4D5E6FA002 /* Build configuration list for PBXNativeTarget "JustSip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D41A2B3C4D5E6F9003 /* Debug */,
+				A1B2C3D41A2B3C4D5E6F9004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1B2C3D41A2B3C4D5E6F3001 /* Project object */;
+}
