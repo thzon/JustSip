@@ -1,5 +1,7 @@
 import SwiftUI
 import SwiftData
+import UserNotifications
+import UIKit
 
 struct ContentView: View {
     @State private var isPresentingAddEntry = false
@@ -63,9 +65,15 @@ private enum AppTab {
 
 private struct HomeView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.scenePhase) private var scenePhase
     @Query(sort: [SortDescriptor(\CoffeeEntry.date, order: .reverse)])
     private var entries: [CoffeeEntry]
+    @AppStorage("coffeeReminderEnabled") private var reminderEnabled = false
+    @AppStorage("coffeeReminderHour") private var reminderHour = 9
+    @AppStorage("coffeeReminderMinute") private var reminderMinute = 30
     @State private var entryToEdit: CoffeeEntry?
+    @State private var isPresentingReminderSheet = false
+    @State private var reminderAuthorizationStatus: UNAuthorizationStatus = .notDetermined
     private let entryInsertionTransition = AnyTransition.offset(x: 0, y: 18).combined(with: .opacity)
 
     var body: some View {
@@ -151,8 +159,39 @@ private struct HomeView: View {
                 }
             }
             .navigationTitle("咖一下")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        isPresentingReminderSheet = true
+                    } label: {
+                        Image(systemName: reminderEnabled ? "bell.badge.fill" : "bell")
+                            .foregroundStyle(reminderEnabled ? Color.justSipAccent : .primary)
+                    }
+                    .accessibilityLabel(reminderEnabled ? "已开启咖啡提醒" : "设置咖啡提醒")
+                }
+            }
             .sheet(item: $entryToEdit) { entry in
                 AddEntryView(entryToEdit: entry)
+            }
+            .sheet(isPresented: $isPresentingReminderSheet) {
+                reminderSheet
+            }
+            .task {
+                await refreshReminderAuthorization()
+            }
+            .onChange(of: scenePhase) { _, newPhase in
+                guard newPhase == .active else {
+                    return
+                }
+
+                Task {
+                    await refreshReminderAuthorization()
+                }
+            }
+            .onChange(of: reminderTimeKey) { _, _ in
+                Task {
+                    await rescheduleReminderIfNeeded()
+                }
             }
         }
     }
@@ -225,6 +264,103 @@ private struct HomeView: View {
         entries.map(\.id)
     }
 
+    private var reminderCard: some View {
+        CoffeeReminderCard(
+            isEnabled: reminderEnabled,
+            authorizationStatus: reminderAuthorizationStatus,
+            reminderTime: reminderDate,
+            timeText: formattedReminderTime,
+            toggleBinding: Binding(
+                get: { reminderEnabled },
+                set: { newValue in
+                    Task {
+                        await updateReminderEnabled(newValue)
+                    }
+                }
+            ),
+            openSettings: openSystemSettings
+        )
+    }
+
+    private var reminderSheet: some View {
+        NavigationStack {
+            ZStack {
+                Color.justSipBackground
+                    .ignoresSafeArea()
+
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 16) {
+                        reminderCard
+
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("提醒说明")
+                                .font(.headline.weight(.semibold))
+
+                            Text("开启后，App 会在你设定的时间提醒你喝咖啡，也方便你顺手完成当天记录。")
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .fixedSize(horizontal: false, vertical: true)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(18)
+                        .background(
+                            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                                .fill(Color.justSipCardBackground)
+                                .shadow(color: Color.justSipShadowColor, radius: 10, x: 0, y: 4)
+                        )
+                    }
+                    .padding(20)
+                }
+            }
+            .navigationTitle("咖啡提醒")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("完成") {
+                        isPresentingReminderSheet = false
+                    }
+                    .fontWeight(.semibold)
+                }
+            }
+        }
+        .presentationDetents([.medium, .large])
+    }
+
+    private var reminderDate: Binding<Date> {
+        Binding(
+            get: {
+                let calendar = Calendar.current
+                return calendar.date(
+                    bySettingHour: reminderHour,
+                    minute: reminderMinute,
+                    second: 0,
+                    of: .now
+                ) ?? .now
+            },
+            set: { newValue in
+                let components = Calendar.current.dateComponents([.hour, .minute], from: newValue)
+                reminderHour = components.hour ?? 9
+                reminderMinute = components.minute ?? 30
+            }
+        )
+    }
+
+    private var reminderTimeKey: String {
+        "\(reminderHour):\(reminderMinute)"
+    }
+
+    private var formattedReminderTime: String {
+        let calendar = Calendar.current
+        let date = calendar.date(
+            bySettingHour: reminderHour,
+            minute: reminderMinute,
+            second: 0,
+            of: .now
+        ) ?? .now
+
+        return date.formatted(.dateTime.hour().minute().locale(Locale(identifier: "zh_CN")))
+    }
+
     private func deleteEntries(at offsets: IndexSet, from sectionEntries: [CoffeeEntry]) {
         for index in offsets {
             modelContext.delete(sectionEntries[index])
@@ -253,6 +389,73 @@ private struct HomeView: View {
             .foregroundStyle(.secondary)
             .textCase(nil)
             .padding(.leading, 2)
+    }
+
+    private func updateReminderEnabled(_ newValue: Bool) async {
+        if newValue {
+            let isAuthorized = await CoffeeReminderScheduler.requestAuthorizationIfNeeded()
+            let latestStatus = await CoffeeReminderScheduler.authorizationStatus()
+
+            await MainActor.run {
+                reminderAuthorizationStatus = latestStatus
+            }
+
+            guard isAuthorized else {
+                await MainActor.run {
+                    reminderEnabled = false
+                }
+                return
+            }
+
+            do {
+                try await CoffeeReminderScheduler.scheduleDailyReminder(hour: reminderHour, minute: reminderMinute)
+                await MainActor.run {
+                    reminderEnabled = true
+                }
+            } catch {
+                await MainActor.run {
+                    reminderEnabled = false
+                }
+            }
+        } else {
+            CoffeeReminderScheduler.cancelReminder()
+            await MainActor.run {
+                reminderEnabled = false
+            }
+        }
+    }
+
+    private func refreshReminderAuthorization() async {
+        let status = await CoffeeReminderScheduler.authorizationStatus()
+
+        await MainActor.run {
+            reminderAuthorizationStatus = status
+
+            if status != .authorized && status != .provisional && reminderEnabled {
+                reminderEnabled = false
+            }
+        }
+    }
+
+    private func rescheduleReminderIfNeeded() async {
+        guard reminderEnabled else {
+            return
+        }
+
+        let status = await CoffeeReminderScheduler.authorizationStatus()
+        guard status == .authorized || status == .provisional else {
+            return
+        }
+
+        try? await CoffeeReminderScheduler.scheduleDailyReminder(hour: reminderHour, minute: reminderMinute)
+    }
+
+    private func openSystemSettings() {
+        guard let settingsURL = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+
+        UIApplication.shared.open(settingsURL)
     }
 }
 
@@ -415,6 +618,165 @@ private struct CoffeeEnergyLevel {
             tint = Color.secondary.opacity(0.35)
             progress = 0
         }
+    }
+}
+
+private struct CoffeeReminderCard: View {
+    let isEnabled: Bool
+    let authorizationStatus: UNAuthorizationStatus
+    let reminderTime: Binding<Date>
+    let timeText: String
+    let toggleBinding: Binding<Bool>
+    let openSettings: () -> Void
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 14) {
+            HStack(alignment: .top, spacing: 14) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text("每日咖啡提醒")
+                        .font(.headline.weight(.semibold))
+
+                    Text(statusText)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+
+                Spacer(minLength: 12)
+
+                Toggle("", isOn: toggleBinding)
+                    .labelsHidden()
+                    .tint(Color.justSipAccent)
+            }
+
+            HStack(spacing: 12) {
+                Label("提醒时间", systemImage: "bell.badge")
+                    .font(.subheadline.weight(.medium))
+                    .foregroundStyle(.primary)
+
+                Spacer()
+
+                DatePicker(
+                    "",
+                    selection: reminderTime,
+                    displayedComponents: .hourAndMinute
+                )
+                .labelsHidden()
+                .disabled(!canAdjustTime)
+                .opacity(canAdjustTime ? 1.0 : 0.5)
+            }
+            .padding(.horizontal, 14)
+            .padding(.vertical, 12)
+            .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                    .fill(Color.justSipInsetBackground)
+            )
+
+            if authorizationStatus == .denied {
+                Button {
+                    openSettings()
+                } label: {
+                    HStack(spacing: 8) {
+                        Image(systemName: "gearshape.fill")
+                            .font(.footnote.weight(.semibold))
+
+                        Text("去系统设置开启通知")
+                            .font(.footnote.weight(.semibold))
+                    }
+                    .foregroundStyle(Color.justSipAccent)
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical, 18)
+        .background(
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .fill(Color.justSipCardBackground)
+                .shadow(color: Color.justSipShadowColor, radius: 10, x: 0, y: 4)
+        )
+    }
+
+    private var canAdjustTime: Bool {
+        authorizationStatus != .denied
+    }
+
+    private var statusText: String {
+        if authorizationStatus == .denied {
+            return "通知权限未开启，请到系统设置中允许提醒"
+        }
+
+        if isEnabled {
+            return "已设置每天 \(timeText) 提醒你喝杯咖啡"
+        }
+
+        return "打开后，每天会在固定时间提醒你来一杯"
+    }
+}
+
+private enum CoffeeReminderScheduler {
+    static let identifier = "justsip.daily.coffee.reminder"
+
+    static func authorizationStatus() async -> UNAuthorizationStatus {
+        await withCheckedContinuation { continuation in
+            UNUserNotificationCenter.current().getNotificationSettings { settings in
+                continuation.resume(returning: settings.authorizationStatus)
+            }
+        }
+    }
+
+    static func requestAuthorizationIfNeeded() async -> Bool {
+        let status = await authorizationStatus()
+
+        switch status {
+        case .authorized, .provisional, .ephemeral:
+            return true
+        case .notDetermined:
+            return await requestAuthorization()
+        case .denied:
+            return false
+        @unknown default:
+            return false
+        }
+    }
+
+    static func requestAuthorization() async -> Bool {
+        await withCheckedContinuation { continuation in
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+                continuation.resume(returning: granted)
+            }
+        }
+    }
+
+    static func scheduleDailyReminder(hour: Int, minute: Int) async throws {
+        cancelReminder()
+
+        let content = UNMutableNotificationContent()
+        content.title = "咖啡时间到了 ☕️"
+        content.body = "别忘了来一杯喜欢的咖啡，也顺手记录一下今天的状态。"
+        content.sound = .default
+
+        var dateComponents = DateComponents()
+        dateComponents.hour = hour
+        dateComponents.minute = minute
+
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(returning: ())
+                }
+            }
+        }
+    }
+
+    static func cancelReminder() {
+        let center = UNUserNotificationCenter.current()
+        center.removePendingNotificationRequests(withIdentifiers: [identifier])
+        center.removeDeliveredNotifications(withIdentifiers: [identifier])
     }
 }
 

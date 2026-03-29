@@ -9,24 +9,24 @@
 /* Begin PBXBuildFile section */
 		A1B2C3D41A2B3C4D5E6F7001 /* JustSipApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6001 /* JustSipApp.swift */; };
 		A1B2C3D41A2B3C4D5E6F7002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6002 /* ContentView.swift */; };
-			A1B2C3D41A2B3C4D5E6F7003 /* CoffeeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */; };
-			A1B2C3D41A2B3C4D5E6F7004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */; };
-			A1B2C3D41A2B3C4D5E6F7005 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */; };
-			A1B2C3D41A2B3C4D5E6F7006 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */; };
-			A1B2C3D41A2B3C4D5E6F7007 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */; };
-			A1B2C3D41A2B3C4D5E6F7008 /* JustSipTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */; };
+		A1B2C3D41A2B3C4D5E6F7003 /* CoffeeEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */; };
+		A1B2C3D41A2B3C4D5E6F7004 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */; };
+		A1B2C3D41A2B3C4D5E6F7005 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */; };
+		A1B2C3D41A2B3C4D5E6F7006 /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */; };
+		A1B2C3D41A2B3C4D5E6F7007 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */; };
+		A1B2C3D41A2B3C4D5E6F7008 /* JustSipTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A1B2C3D41A2B3C4D5E6F5001 /* JustSip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustSip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B2C3D41A2B3C4D5E6F6001 /* JustSipApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustSipApp.swift; sourceTree = "<group>"; };
 		A1B2C3D41A2B3C4D5E6F6002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-			A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeEntry.swift; sourceTree = "<group>"; };
-			A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-			A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
-			A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
-			A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
-			A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustSipTheme.swift; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6003 /* CoffeeEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoffeeEntry.swift; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6004 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6005 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6006 /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6007 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A1B2C3D41A2B3C4D5E6F6008 /* JustSipTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustSipTheme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,19 +274,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JustSip/Preview Content\"";
+				DEVELOPMENT_TEAM = FCW5VS9P5C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.JustSip;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thzon.JustSip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -304,19 +305,20 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"JustSip/Preview Content\"";
+				DEVELOPMENT_TEAM = FCW5VS9P5C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.JustSip;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thzon.JustSip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
